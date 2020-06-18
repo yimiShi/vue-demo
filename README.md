@@ -1,21 +1,11 @@
-# vue-demo
+### 1. 组件
+  1. 拆分组件
+  2. 静态组件
+  3. 动态组件
+     1. 初始化显示
+     2. 交互
 
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### 2 .设计数据
+  1.  数据类型  数组
+  2.  数据名称  todos
+  3.  数据存在哪个组件  看是哪个组件使用
