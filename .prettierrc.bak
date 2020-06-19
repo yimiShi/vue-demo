@@ -1,6 +1,5 @@
 {
-  "eslintIntegration": true,
+  "prettier.eslintIntegration": true,
   "semi": false,
-  "prettier.bracketSpacing": true,
   "singleQuote": true
 }
