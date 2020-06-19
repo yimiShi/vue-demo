@@ -12,10 +12,10 @@
 <script>
 export default {
   props: {
-    addTodo: {
-      type: Function,
-      required: true
-    }
+    // addTodo: {
+    //   type: Function,
+    //   required: true
+    // }
   },
   data() {
     return {
@@ -32,7 +32,11 @@ export default {
           title: this.title,
           complete: false
         }
-        this.addTodo(todo)
+        // props接收版本
+        // this.addTodo(todo)
+
+        // 分发自定义事件
+        this.$emit('addTodo', todo)
       }
       this.title = ''
     }

@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import PubSub from 'pubsub-js'
+
 export default {
   data() {
     return {
@@ -30,7 +32,7 @@ export default {
   props: {
     todo: Object,
     index: Number,
-    deleteTodo: Function,
+    // deleteTodo: Function,
     updateTodo: Function
   },
   methods: {
@@ -46,7 +48,11 @@ export default {
 
     deleteItem() {
       if (confirm('确定删除吗?')) {
-        this.deleteTodo(this.index)
+        /* props 写法 */
+        // this.deleteTodo(this.index)
+
+        /* 全局事件总线对象分发的自定义事件 */
+        this.$globalEventBus.$emit('deleteTodo', this.index)
       }
     }
   },
@@ -58,6 +64,9 @@ export default {
       },
       set(isCheck) {
         this.updateTodo(isCheck, this.todo)
+
+        // 消息订阅
+        PubSub.publish('updateTodo', {todo: this.todo, complete: isCheck})
       }
     }
   }

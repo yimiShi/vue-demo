@@ -1,10 +1,10 @@
 <template>
   <div class="todo-container">
     <div class="todo-wrap">
-      <Header :addTodo="addTodo"></Header>
+      <!-- <Header @addTodo="addTodo"></Header> -->
+      <Header ref="header"></Header>
       <List
         :todos="todos"
-        :deleteTodo="deleteTodo"
         :updateTodo="updateTodo"
       ></List>
       <Footer :todos="todos" :selectAll="selectAll" :deleteCompleted="deleteCompleted"></Footer>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import Publish from 'pubsub-js'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import List from './components/List'
@@ -27,6 +28,25 @@ export default {
       // ]
       todos: JSON.parse(localStorage.getItem('todos_key') || '[]')
     }
+  },
+
+  mounted() {
+    /* 自定义事件监听 */
+    this.$refs.header.$on('addTodo', this.addTodo)
+
+    /*  通过事件总线绑定的事件监听 */
+    this.$globalEventBus.$on('deleteTodo', this.deleteTodo)
+
+    // 订阅消息
+    this.token = Publish.subscribe('updateTodo', function (msg, {todo, complete}) {
+      this.updateTodo(todo, complete)
+    })
+  },
+
+  beforeDestroy() {
+    this.$refs.header.$off('addTodo')
+    this.$globalEventBus.$off('deleteTodo')
+    Publish.unsubscribe(this.token)
   },
 
   components: {

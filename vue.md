@@ -101,6 +101,10 @@
      4. 祖孙通信 逐层传递
   3. ref, 获取子组件对象
      1. 事件在父组件, 数据在子组件
+  4. vue自定义事件
+  5. 消息订阅与发布
+     1. pubSubJs
+  6. slot
 
 #### 3. 事件操作
   1. 绑定事件监听
@@ -111,4 +115,21 @@
      2. 自定义的: 必须执行特定的分发事件的代码
      3. 事件名/类型
      4. 数据
-   
+  3. 自定义事件
+     1. 子向父传递数据
+        <Header @addTodo="addTodo"></Header> 
+        this.$emit('addTodo', todo)
+     2. 子向父传递数据
+        ```
+          App.vue
+          <Header ref="header"></Header>
+          mounted() {
+            this.$refs.header.$on('addTodo', this.addTodo)
+          },
+          methods: {
+            addTodo() {...}
+          }
+          Header.vue
+          this.$emit('addTodo', todo)
+        ```
+     3.全局事件中线

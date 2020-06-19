@@ -5,7 +5,6 @@
       :key="todo.id"
       :todo="todo"
       :index="index"
-      :deleteTodo="deleteTodo"
       :updateTodo="updateTodo"
     ></Item>
   </ul>
@@ -14,7 +13,7 @@
 <script>
 import Item from './Item'
 export default {
-  props: ['todos', 'deleteTodo', 'updateTodo'],
+  props: ['todos', 'updateTodo'],
 
   components: {
     Item
