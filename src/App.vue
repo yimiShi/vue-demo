@@ -3,11 +3,25 @@
     <div class="todo-wrap">
       <!-- <Header @addTodo="addTodo"></Header> -->
       <Header ref="header"></Header>
-      <List
+      <List :todos="todos" :updateTodo="updateTodo"></List>
+      <Footer
         :todos="todos"
-        :updateTodo="updateTodo"
-      ></List>
-      <Footer :todos="todos" :selectAll="selectAll" :deleteCompleted="deleteCompleted"></Footer>
+        :selectAll="selectAll"
+        :deleteCompleted="deleteCompleted"
+      >
+        <input type="checkbox" v-model="checkAll"  slot="left"/>
+        <span slot="middle">
+          <span>已完成{{ completeCount }}</span> / 全部{{ todos.length }}
+        </span>
+        <button
+          class="btn btn-danger"
+          v-if="completeCount > 0"
+          @click="deleteCompleted"
+          slot="right"
+        >
+          清除已完成任务
+        </button>
+      </Footer>
     </div>
   </div>
 </template>
@@ -38,7 +52,10 @@ export default {
     this.$globalEventBus.$on('deleteTodo', this.deleteTodo)
 
     // 订阅消息
-    this.token = Publish.subscribe('updateTodo', function (msg, {todo, complete}) {
+    this.token = Publish.subscribe('updateTodo', function (
+      msg,
+      { todo, complete }
+    ) {
       this.updateTodo(todo, complete)
     })
   },
@@ -74,13 +91,30 @@ export default {
     },
     // 删除已完成
     deleteCompleted() {
-      this.todos = this.todos.filter(todo => !todo.complete)
+      this.todos = this.todos.filter((todo) => !todo.complete)
+    }
+  },
+  computed: {
+    completeCount() {
+      return this.todos.reduce((pre, todo) => pre + (todo.complete ? 1 : 0), 0)
+    },
+    checkAll: {
+      get() {
+        return (
+          this.todos.length === this.completeCount && this.completeCount > 0
+        )
+      },
+      set(value) {
+        this.selectAll(value)
+      }
     }
   },
 
   watch: {
     todos: {
-      handler: function (value) { localStorage.setItem('todos_key', JSON.stringify(value)) },
+      handler: function (value) {
+        localStorage.setItem('todos_key', JSON.stringify(value))
+      },
       deep: true
     }
   }
