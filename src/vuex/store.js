@@ -6,7 +6,8 @@ Vue.use(Vuex);
 
 // 包含n个状态数据的对象
 const state = {
-  count: 1
+  count: 1,
+  xxx: true
 };
 
 // 直接更新状态数据的方法对象
