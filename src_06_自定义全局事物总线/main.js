@@ -2,10 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import EventBus from './event-bus'
+import eventBus from './event-bus'
 
 
-Vue.prototype.$globalEventBus = new Vue()
+Vue.prototype.$globalEventBus = eventBus
 
 
 /* eslint-disable no-new */

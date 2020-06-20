@@ -161,4 +161,5 @@
         <router-view></router-view>
      </keep-alive>
 
-#### 5.
+#### 5. vuex
+  1. 对vue中多个组件的共享状态进行集中式的管理(读/写)
