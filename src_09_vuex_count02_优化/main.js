@@ -1,21 +1,14 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import VueResource from 'vue-resource'
-import axios from 'axios'
-
 import App from './App'
-import store from './store'
+import store from './vuex/store'
 
-Vue.use(VueResource)
-
-Vue.prototype.$globalEventBus = new Vue()
-Vue.prototype.$axios = axios
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   components: { App },
   template: '<App />',
-  store
+  store // 配置vuex的store对象, 所有组件对象都可以看到 $store
 })
