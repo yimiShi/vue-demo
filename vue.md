@@ -140,7 +140,7 @@
 
 #### 4. router, 路由
   1. route, 路由对象,每个组件都有一个
-  2. router, 路由器对象, 公用一个
+  2. router, 路由器对象, 公用一个, 在main.js中注册过的
   3. 获取url参数, 
      1. 在路由组件中: this.$route.params.id  this.$route.query.id
      2. 在router.js中, 实现了组件和路由的分离, 使组件既可以作为路由组件又可以作为一般组件, 因为组件内部不再使用this.$route方式获取参数
