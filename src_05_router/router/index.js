@@ -1,19 +1,18 @@
-/* 
+/*
 路由器模块
 */
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
 // import Home from "../pages/Home.vue";
 // import About from "../pages/About.vue";
 import routes from './routers.js'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 export default new VueRouter({
-
   // url有无  #
-  mode : 'history', 
+  mode: 'history',
   routes
   // routes: [
   //   {
@@ -29,4 +28,4 @@ export default new VueRouter({
   //     component: Home,
   //   },
   // ],
-});
+})

@@ -5,7 +5,7 @@
     <h1 v-else-if="errorMsg">{{ errorMsg }}</h1>
 
     <div class="row" v-else-if="users.length > 0">
-      <div class="card" v-for="(user) in users" :key="user.username">
+      <div class="card" v-for="(user, index) in users" :key="user.username">
         <a :href="user.url" target="_blank">
           <img :src="user.avatar_url" style="width: 100px;" />
         </a>
@@ -17,17 +17,13 @@
 
 <script>
 import { mapState } from 'vuex'
-
-export default{
+export default {
 
   computed: {
-    firstView() {
-      return this.$store.state.firstView
-    },
-    ...mapState(['loading', 'users', 'errorMsg'])
+    ...mapState(['firstView', 'loading', 'users', 'errorMsg'])
   }
-}
 
+}
 </script>
 
 <style>

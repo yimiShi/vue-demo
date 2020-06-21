@@ -2,11 +2,9 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <Header :addTodo="addTodo"></Header>
-      <List
-        :todos="todos"
-        :deleteTodo="deleteTodo"
-        :updateTodo="updateTodo"
-      ></List>
+      <List :todos="todos"
+            :deleteTodo="deleteTodo"
+            :updateTodo="updateTodo"></List>
       <Footer></Footer>
     </div>
   </div>
@@ -18,7 +16,7 @@ import Footer from './components/Footer'
 import List from './components/List'
 
 export default {
-  data() {
+  data () {
     return {
       todos: [
         { id: 1, title: 'aaa', complete: false },
@@ -28,13 +26,13 @@ export default {
     }
   },
   methods: {
-    addTodo(todo) {
+    addTodo (todo) {
       this.todos.unshift(todo)
     },
-    deleteTodo(index) {
+    deleteTodo (index) {
       this.todos.splice(index, 1)
     },
-    updateTodo(todo, complete) {
+    updateTodo (todo, complete) {
       todo.complete = complete
     }
   },

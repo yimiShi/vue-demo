@@ -1,14 +1,15 @@
 <template>
-  <li
-    :style="{ background: bgColor }"
-    @mouseenter="handleEnter(false)"
-    @mouseleave="handleEnter(true)"
-  >
+  <li :style="{ background: bgColor }"
+      @mouseenter="handleEnter(false)"
+      @mouseleave="handleEnter(true)">
     <label>
-      <input type="checkbox" v-model="isCheck" />
+      <input type="checkbox"
+             v-model="isCheck" />
       <span>{{ todo.title }}</span>
     </label>
-    <button class="btn btn-danger" v-show="isShow" @click="deleteItem">
+    <button class="btn btn-danger"
+            v-show="isShow"
+            @click="deleteItem">
       删除
     </button>
   </li>
@@ -22,14 +23,14 @@ export default {
     updateTodo: Function,
     index: Number
   },
-  data() {
+  data () {
     return {
       bgColor: 'white',
       isShow: false
     }
   },
   methods: {
-    handleEnter(isEnter) {
+    handleEnter (isEnter) {
       if (!isEnter) {
         this.bgColor = '#ccc'
         this.isShow = true
@@ -38,7 +39,7 @@ export default {
         this.isShow = false
       }
     },
-    deleteItem() {
+    deleteItem () {
       if (confirm('确定删除吗')) {
         this.deleteTodo(this.index)
       }
@@ -47,11 +48,11 @@ export default {
 
   computed: {
     isCheck: {
-      get() {
+      get () {
         return this.todo.complete
       },
       // 用户操作checkbox的时候调用
-      set(value) {
+      set (value) {
         this.updateTodo(this.todo, value)
       }
     }

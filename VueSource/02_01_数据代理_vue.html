@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>02_数据代理_vue</title>
+  </head>
+
+  <body>
+    <div id="test">
+      <p>{{name}}</p>
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+      const vm = new Vue({
+        el: "#test",
+        data: {
+          name: "feifei",
+        },
+      });
+
+      console.log(vm);
+
+      console.log(vm.name);
+      vm.name = "minmin";
+      console.log(vm.name);
+
+      // vm代理了data中数据的写操作
+      console.log(vm._data.name);
+    </script>
+  </body>
+</html>

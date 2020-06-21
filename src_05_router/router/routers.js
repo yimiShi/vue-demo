@@ -1,16 +1,16 @@
-import Home from "../pages/Home.vue";
-import About from "../pages/About.vue";
+import Home from '../pages/Home.vue'
+import About from '../pages/About.vue'
 import News from '../pages/News.vue'
 import Message from '../pages/Message.vue'
 import MessageDetail from '../pages/MessageDetail.vue'
 
 export default [
   {
-    path: "/about",
-    component: About,
+    path: '/about',
+    component: About
   },
   {
-    path: "/home",
+    path: '/home',
     component: Home,
     children: [
       {
@@ -34,7 +34,7 @@ export default [
     ]
   },
   {
-    path: "/",
+    path: '/',
     redirect: '/about'
-  },
+  }
 ]

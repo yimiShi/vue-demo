@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
 export default {
- /*  computed: {
+  /*  computed: {
     count() {
       return this.$store.state.count
     },
@@ -22,14 +22,14 @@ export default {
   }, */
 
   computed: {
-    ...mapState(['count']), //{count: ()=>this.$store.state['count']} ,对象
+    ...mapState(['count']), // {count: ()=>this.$store.state['count']} ,对象
     // ...mapGetters(['evenOdd'])
     ...mapGetters({
-      evenOdd2: 'evenOdd'  //{evenOdd2: ()=>this.$store.getters['evenOdd']}
+      evenOdd2: 'evenOdd' // {evenOdd2: ()=>this.$store.getters['evenOdd']}
     })
-  }, 
+  },
   mounted() {
-    console.log('mounted()...', this.$store);
+    console.log('mounted()...', this.$store)
   },
 
   methods: {
@@ -38,7 +38,7 @@ export default {
       decrement: 'DECREMENT'
     }),
     ...mapActions(['incrementIfOdd', 'incrementAsync'])
-  
+
   }
 
   /* methods: {
@@ -64,7 +64,7 @@ export default {
 
     },
   }, */
-};
+}
 </script>
 
 <style scoped></style>

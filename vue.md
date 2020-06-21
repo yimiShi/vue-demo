@@ -139,7 +139,7 @@
      3.全局事件总线
 
 #### 4. router, 路由
-  1. route, 路由对象,每个组件都有一个
+  1. route, 当前路由对象,每个组件都有一个
   2. router, 路由器对象, 公用一个, 在main.js中注册过的
   3. 获取url参数, 
      1. 在路由组件中: this.$route.params.id  this.$route.query.id
@@ -152,7 +152,7 @@
         1. <router-link :to="`/home/message/detail/${message.id}">
           {{ message.title }}
         </router-link>
-     2. 编程式
+     2. 编程式, push, replace, back()
         1. this.$router.push(`/home/message/detail/${id}`);
   5. 缓存路由组件
      1. input标签输入的内容, 跳到其他组件再跳回来数据依旧存在
@@ -163,3 +163,37 @@
 
 #### 5. vuex
   1. 对vue中多个组件的共享状态进行集中式的管理(读/写)
+
+#### 6. vue数据代理
+  1. 是什么:将vm和data里面的数据进行直接关联, vm是代理对象, data是被代理对象
+  2. 作用: 实现了通过vm对象直接操作data里面的数据,
+  3. 优点: 更方便的操作data中的数据, 简化了操作
+  4. 实现原理: 给vm通过defineProperty添加对应的属性, 每个属性都有get, set方法
+
+#### 7. 摸板解析
+  1. compile对象
+  2. 基本流程
+     1. 取出el里面的所有子标签, 加到Fragment
+     2. fragment里面替换, 所有层次子节点进行递归编译
+     3. 放回el, el.appendChild()
+
+#### 8. 数据绑定
+  1. 数据改变 页面也改变
+  2. 数据劫持, 实现数据绑定的一种技术
+     1. 通过defineProperty()来监视data中的数据变化
+  3. 核心
+     1. observer, 发布
+        1. 对data中所有层次属性进行劫持/监视
+     2. dep , 订阅器
+        1. 初始化过程中对属性添加监视前
+        2. 与data中的属性 一一对应
+     3. watcher, 
+        1. 在初始化过程中编译每个模板语法的时候创建(事件指令除外)
+        2. 创建的个数于表达式 一一对应
+  4. 更新流程
+     1. this.name = 'tom' ==> data的name属性变量
+                          ==> observer中的name对应的setter执行
+                          ==> dep监听通知对应的watcher更新对应的节点
+     2. dep与watcher的关系, 一对多
+        1. dep { watchers: [w1, w2]}
+        2. watcher {depIds: {0: dep1, 1: dep2}}

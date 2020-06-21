@@ -12,8 +12,8 @@
 export default {
   data() {
     return {
-      count: 0,
-    };
+      count: 0
+    }
   },
   computed: {
     // evenOrOdd () {
@@ -21,7 +21,7 @@ export default {
     // }
   },
   mounted() {
-    console.log('mounted()...', this.$store);
+    console.log('mounted()...', this.$store)
   },
   methods: {
     increment() {
@@ -35,18 +35,16 @@ export default {
       // if (this.count % 2 === 1) {
       //   this.count++;
       // }
-        this.$store.dispatch('incrementIfOdd')
-
+      this.$store.dispatch('incrementIfOdd')
     },
     incrementAsync() {
       // setTimeout(() => {
       //   this.count++;
       // }, 1000);
-        this.$store.dispatch('incrementAsync')
-
-    },
-  },
-};
+      this.$store.dispatch('incrementAsync')
+    }
+  }
+}
 </script>
 
 <style scoped></style>

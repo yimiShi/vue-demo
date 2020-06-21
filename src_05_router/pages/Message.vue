@@ -21,30 +21,30 @@
 export default {
   data() {
     return {
-      messages: [],
-    };
+      messages: []
+    }
   },
   mounted() {
-    console.log("message...");
+    console.log('message...')
     setTimeout(() => {
       const messages = [
-        { id: 1, title: "aaa" },
-        { id: 2, title: "bbb" },
-        { id: 3, title: "ccc" },
-        { id: 4, title: "ddd" },
-      ];
-      this.messages = messages;
-    }, 1000);
+        { id: 1, title: 'aaa' },
+        { id: 2, title: 'bbb' },
+        { id: 3, title: 'ccc' },
+        { id: 4, title: 'ddd' }
+      ]
+      this.messages = messages
+    }, 1000)
   },
   methods: {
     pushShow(id) {
-      this.$router.push(`/home/message/detail/${id}`);
+      this.$router.push(`/home/message/detail/${id}`)
     },
     replaceShow(id) {
-      this.$router.replace(`/home/message/detail/${id}`);
-    },
-  },
-};
+      this.$router.replace(`/home/message/detail/${id}`)
+    }
+  }
+}
 </script>
 
 <style></style>
